@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Realizar Pedido</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo-container">
+                <img src="img/logo.jpg" alt="Icono" class="logo">
+                <h1>Realizar Pedido</h1>
+            </div>
+        </header>
+
+        <!-- Formulario para el pedido -->
+        <main>
+            <section class="formulario-pedido">
+                <form action="gracias.html" method="post">
+                    <!-- Script para extraer parámetros de la URL -->
+                    <script>
+                        // Función para obtener parámetros de la URL
+                        function getParameterByName(name) {
+                            const url = new URL(window.location.href);
+                            return url.searchParams.get(name);
+                        }
+
+                        // Extrae los parámetros de la URL
+                        const nombrePlato = getParameterByName('plato');
+                        const precioPlato = getParameterByName('precio');
+
+                        // Si existen parámetros, los coloca en los campos correspondientes
+                        document.addEventListener('DOMContentLoaded', function() {
+                            if (nombrePlato) {
+                                document.getElementById('nombre-plato').value = nombrePlato;
+                            }
+                            if (precioPlato) {
+                                document.getElementById('precio').value = 'S/ ' + precioPlato;
+                            }
+                        });
+                    </script>
+
+                    <!-- Campo para el nombre del cliente -->
+                    <label for="nombre-cliente">Tu Nombre:</label>
+                    <input type="text" id="nombre-cliente" name="nombre-cliente" required placeholder="Ingresa tu nombre">
+
+                    <label for="nombre-plato">Nombre del Platillo:</label>
+                    <input type="text" id="nombre-plato" name="nombre-plato" readonly placeholder="Nombre del platillo que deseas">
+
+                    <label for="precio">Precio:</label>
+                    <input type="text" id="precio" name="precio" readonly placeholder="Precio del platillo">
+
+                    <label for="cantidad">Cantidad:</label>
+                    <input type="number" id="cantidad" name="cantidad" required min="1" placeholder="Número de platillos">
+
+                    <label for="telefono">Número de Teléfono:</label>
+                    <input type="tel" id="telefono" name="telefono" required placeholder="Número de contacto">
+
+                    <label for="correo">Correo Electrónico:</label>
+                    <input type="email" id="correo" name="correo" required placeholder="tuemail@ejemplo.com">
+
+                    <!-- Botón para enviar el formulario -->
+                    <button type="submit" class="boton-enviar">Realizar Pedido</button>
+                </form>
+            </section>
+        </main>
+    </div>
+</body>
+</html>
